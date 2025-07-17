@@ -16,7 +16,7 @@ install_fonts() {
 	mkdir -p "$DEST"
 
 	if mv fonts/* "$DEST/"; then
-		echo -e "${GREEN}[-]${NC} Fonts moved succesfully"
+		echo -e "${GREEN}[+]${NC} Fonts moved successfully"
 		return 0
 	else
 		echo -e "${RED}[-]${NC} Error moving fonts"
@@ -28,7 +28,7 @@ load_fonts() {
 	echo -e "${BLUE}[*]${NC} Updating fonts cache"
 
 	if fc-cache -fv >/dev/null; then
-		echo -e "${GREEN}[-]${NC} Cache updated succesfully"
+		echo -e "${GREEN}[+]${NC} Cache updated successfully"
 		return 0
 	else
 		echo -e "${RED}[-]${NC} Failed to update cache"
@@ -37,7 +37,7 @@ load_fonts() {
 }
 
 if install_fonts && load_fonts; then
-	echo -e "${GREEN}[-]${NC} Fonts installed succesfully"
+	echo -e "${GREEN}[+]${NC} Fonts installed successfully"
 else
 	echo -e "${RED}[-]${NC} An error occurred while installing the fonts"
 fi
