@@ -1,6 +1,6 @@
-# Fonts Installer Repository
+# Fonts
 
-This repository provides a curated collection of popular open source fonts with an automated installation script to streamline setup on your system.
+A handy collection of popular open-source fonts, all in one place. Comes with an easy-to-use install script to get everything set up on your system in no time.
 
 ## Included Fonts
 
