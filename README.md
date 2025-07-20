@@ -13,7 +13,6 @@ All fonts are distributed under their respective open source licenses. See [FONT
 
 ## Installation
 
-
 > [!WARNING]
 > You must have Python 3.6+ and Fontconfig (`fc-cache`) installed on your system.
 > For global installation, **run the installer with `sudo`** to ensure proper permissions.
@@ -26,6 +25,7 @@ All fonts are distributed under their respective open source licenses. See [FONT
 git clone --depth=1 https://github.com/netns/fonts.git
 cd fonts
 ```
+
 2. Run the installation script script with desired options:
 
 ```bash
@@ -46,20 +46,36 @@ python3 install.py [options]
 
 ### Examples
 
-Install locally using the default fonts directory:
+Install fonts locally (default behavior) using the default ./fonts directory:
 
 ```bash
-python3 install.py --local
+python3 install.py
 ```
 
-Install globally specifying a custom fonts directory:
+Install fonts locally using a custom fonts directory:
+
+```bash
+python3 install.py --font=/path/to/fonts
+```
+
+Install fonts system-wide (globally) using the default ./fonts directory:
+
+```bash
+sudo python3 install.py --global
+```
+
+Install fonts system-wide using a custom fonts directory:
 
 ```bash
 sudo python3 install.py --global --font=/path/to/fonts
 ```
 
 > [!NOTE]
-> If you skip the -l or -g options, the installer defaults to local installation.
+> If you don't specify --local or --global, the installer defaults to local installation, which does not require sudo.
+
+> [!WARNING]
+> Global installation writes to /usr/local/share/fonts and requires root privileges.
+> Always use sudo when installing globally, or the script will fail due to permission errors.
 
 ## License
 
@@ -68,7 +84,9 @@ sudo python3 install.py --global --font=/path/to/fonts
 - The fonts themselves retain their original licenses. Please refer to [FONTS_LICENSE.md](./FONTS_LICENSE.md) for full license details
 
 ## Contribution
+
 Contributions are welcome! Feel free to open issues or submit pull requests to improve font selection, installation scripts, or documentation.
 
 ## Disclaimer
+
 This repository respects the licensing terms of all included fonts. Redistribution is done in compliance with each font’s license. The author is not responsible for any issues arising from font installation or usage.
