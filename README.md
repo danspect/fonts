@@ -13,17 +13,53 @@ All fonts are distributed under their respective open source licenses. See [FONT
 
 ## Installation
 
+
+> [!WARNING]
+> You must have Python 3.6+ and Fontconfig (`fc-cache`) installed on your system.
+> For global installation, **run the installer with `sudo`** to ensure proper permissions.
+
+### Steps
+
 1. Clone this repository:
 
 ```bash
 git clone --depth=1 https://github.com/netns/fonts.git
 cd fonts
 ```
-2. Run the installation script to automatically install all fonts:
+2. Run the installation script script with desired options:
 
 ```bash
-./install.sh
+python3 install.py [options]
 ```
+
+### Installer Options
+
+| Option              | Description                                                               |
+| ------------------- | ------------------------------------------------------------------------- |
+| `-l, --local`       | Install fonts locally (default: `~/.local/share/fonts`)                   |
+| `-g, --global`      | Install fonts globally (requires sudo; default: `/usr/local/share/fonts`) |
+| `-f, --font <path>` | Source directory containing font files (default: `./fonts`)               |
+| `-h, --help`        | Show this help message and exit                                           |
+
+> [!TIP]
+> You can check available fonts after installation by running fc-list.
+
+### Examples
+
+Install locally using the default fonts directory:
+
+```bash
+python3 install.py --local
+```
+
+Install globally specifying a custom fonts directory:
+
+```bash
+sudo python3 install.py --global --font=/path/to/fonts
+```
+
+> [!NOTE]
+> If you skip the -l or -g options, the installer defaults to local installation.
 
 ## License
 
