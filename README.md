@@ -38,7 +38,7 @@ python3 install.py [options]
 | ------------------- | ------------------------------------------------------------------------- |
 | `-l, --local`       | Install fonts locally (default: `~/.local/share/fonts`)                   |
 | `-g, --global`      | Install fonts globally (requires sudo; default: `/usr/local/share/fonts`) |
-| `-f, --font <path>` | Source directory containing font files (default: `./fonts`)               |
+| `-f, --font=<path>` | Source directory containing font files (default: `./fonts`)               |
 | `-h, --help`        | Show this help message and exit                                           |
 
 > [!TIP]
