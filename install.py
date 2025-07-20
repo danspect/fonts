@@ -65,6 +65,7 @@ def install_fonts(src: Path, dest: Path):
                     log(f"Skipping existing font: {BLUE}{font.name}{NC}", BLUE)
                     continue
                 shutil.move(font, target)
+                target.chmod(0o644)
 
         slog("Fonts moved successfully")
 
