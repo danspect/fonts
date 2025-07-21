@@ -78,8 +78,8 @@ def update_font_cache(dest: Path):
 
     if shutil.which("fc-cache") is None:
         elog(
-            f"The {BLUE}'fc-cache'{NC} command was not found."
-            " Please install Fontconfig."
+            f"The {BLUE}'fc-cache'{NC} command was not found. "
+            "Please install Fontconfig."
         )
 
     try:
@@ -138,12 +138,11 @@ def main():
 
     validate_font_src_path(src)
 
-    if dest == GLOBAL_DEST:
-        if not os.access(dest, os.W_OK):
-            elog(
-                f"Permission denied to write in {BLUE}{dest}{NC}."
-                " Please execute with sudo."
-            )
+    if dest == GLOBAL_DEST and os.geteuid() != 0:
+        elog(
+            f"Insufficient permissions to write to {BLUE}{dest}{NC}. "
+            "Please run the command as root or use 'sudo'."
+        )
 
     install_fonts(src, dest)
     update_font_cache(dest)
