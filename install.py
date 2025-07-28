@@ -18,6 +18,7 @@ LOCAL_DEST = Path("~/.local/share/fonts").expanduser()
 GLOBAL_DEST = Path("/usr/local/share/fonts")
 FONTS_SRC = Path("./fonts")
 
+FONTS_EXT = {".ttf", ".woff2", ".woff"}
 
 def show_help(code=0):
     usage = f"""
@@ -58,16 +59,18 @@ def install_fonts(src: Path, dest: Path):
     try:
         dest.mkdir(parents=True, exist_ok=True)
 
+        moved_fonts = 0
         for font in src.iterdir():
-            if font.is_file():
+            if font.is_file() and font.suffix.lower() in FONTS_EXT:
                 target = dest / font.name
                 if target.exists():
                     log(f"Skipping existing font: {BLUE}{font.name}{NC}", BLUE)
                     continue
                 shutil.move(font, target)
                 target.chmod(0o644)
+                moved_fonts += 1
 
-        slog("Fonts moved successfully")
+        slog(f"Moved {moved_fonts} fonts successfully")
 
     except Exception as e:
         elog(f"Error moving fonts: {e}")
