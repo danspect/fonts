@@ -42,7 +42,7 @@ python3 install.py [options]
 | `-h, --help`        | Show this help message and exit                                           |
 
 > [!TIP]
-> You can check available fonts after installation by running fc-list.
+> You can check available fonts after installation by running `fc-list`.
 
 ### Examples
 
@@ -58,7 +58,11 @@ Install fonts locally using a custom fonts directory:
 python3 install.py --font=/path/to/fonts
 ```
 
-Install fonts system-wide (globally) using the default ./fonts directory:
+Install fonts system-wide (globally) using the default `./fonts` directory:
+
+> [!WARNING]
+> Global installation writes to `/usr/local/share/fonts` and requires root privileges.
+> Always use sudo when installing globally, or the script will fail due to permission errors.
 
 ```bash
 sudo python3 install.py --global
@@ -71,11 +75,7 @@ sudo python3 install.py --global --font=/path/to/fonts
 ```
 
 > [!NOTE]
-> If you don't specify --local or --global, the installer defaults to local installation, which does not require sudo.
-
-> [!WARNING]
-> Global installation writes to /usr/local/share/fonts and requires root privileges.
-> Always use sudo when installing globally, or the script will fail due to permission errors.
+> If you don't specify `--local` or `--global`, the installer defaults to local installation, which does not require sudo.
 
 ## License
 
