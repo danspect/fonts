@@ -135,7 +135,7 @@ def validate_font_src_path(path: Path):
 def main():
     args = cli()
     dest = LOCAL_DEST if args["local"] else GLOBAL_DEST
-    src = FONTS_SRC if args["font_src"] is None else args["font_src"]
+    src = FONTS_SRC or args["font_src"]
 
     src = src.expanduser().resolve()
 
